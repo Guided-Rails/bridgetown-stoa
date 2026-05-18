@@ -1,0 +1,9 @@
+<html>
+  <head>
+    <title>{{ site.metadata.title }}</title>
+  </head>
+  <body>
+    THIS IS MY LAYOUT
+    {%= yield %}
+  </body>
+</html>
