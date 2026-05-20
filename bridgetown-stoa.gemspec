@@ -5,9 +5,9 @@ require_relative "lib/bridgetown-stoa/version"
 Gem::Specification.new do |spec|
   spec.name          = "bridgetown-stoa"
   spec.version       = BridgetownStoa::VERSION
-  spec.author        = "Bridgetown Team"
-  spec.email         = "maintainers@bridgetownrb.com"
-  spec.summary       = "Sample code for creating new Bridgetown plugins"
+  spec.author        = "Abdullah Hashim"
+  spec.email         = "abdul@hey.com"
+  spec.summary       = "A Bridgetown documentation theme inspired by just-the-docs"
   spec.homepage      = "https://github.com/Guided-Rails/bridgetown-stoa"
   spec.license       = "MIT"
 
@@ -22,9 +22,9 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 3.2"
 
-  spec.add_dependency "bridgetown", ">= 2.0"
+  spec.add_dependency "bridgetown", "~> 2.0"
 
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake", ">= 13.0"
+  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rubocop-bridgetown", "~> 0.3"
 end
