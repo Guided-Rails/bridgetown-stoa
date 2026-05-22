@@ -11,15 +11,12 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/Guided-Rails/bridgetown-stoa"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|spec|features)/!) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|spec|features|frontend)/!) }
   spec.test_files    = spec.files.grep(%r!^test/!)
   spec.require_paths = ["lib"]
-  # TODO: enable the `npm_add` metadata below once the npm companion is
-  # published. While the package is unpublished, Bridgetown's init-time
-  # registry lookup 404s loudly during every test run.
-  # spec.metadata = {
-  #   "npm_add" => "bridgetown-stoa@#{BridgetownStoa::VERSION}",
-  # }
+  spec.metadata      = {
+    "yarn-add" => "bridgetown-stoa@#{BridgetownStoa::VERSION}",
+  }
 
   spec.required_ruby_version = ">= 3.2"
 
