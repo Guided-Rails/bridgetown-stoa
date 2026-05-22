@@ -25,20 +25,20 @@ class TestBridgetownStoa < Bridgetown::TestCase
     end
 
     it "combines page title with site metadata in the document title" do
-      assert_includes @contents, "<title>Home | My Awesome Site</title>"
+      assert_match(%r{<title>\s*Home \| My Awesome Site\s*</title>}, @contents)
     end
 
     it "renders a self-contained HTML document" do
       assert_match(%r{<!doctype html>}i, @contents)
-      assert_includes @contents, "<html"
-      assert_includes @contents, "<head>"
-      assert_includes @contents, "<body>"
+      assert_match(%r{<html[\s>]}, @contents)
+      assert_match(%r{<head[\s>]}, @contents)
+      assert_match(%r{<body[\s>]}, @contents)
     end
 
     it "renders semantic chrome around yielded content" do
-      assert_includes @contents, "<header"
-      assert_includes @contents, "<main"
-      assert_includes @contents, "<footer"
+      assert_match(%r{<header[\s>]}, @contents)
+      assert_match(%r{<main[\s>]}, @contents)
+      assert_match(%r{<footer[\s>]}, @contents)
       assert_includes @contents, "Testing this plugin."
     end
   end

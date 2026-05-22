@@ -3,8 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if resource.data.title %}{{ resource.data.title }} | {% end %}{{ site.metadata.title }}</title>
-    {% if resource.data.description %}<meta name="description" content="{{ resource.data.description }}">{% end %}
+    <title>
+      {% if resource.data.title %}{{ resource.data.title }} | {% end %}{{ site.metadata.title }}
+    </title>
+    {% if resource.data.description %}
+      <meta name="description" content="{{ resource.data.description }}">
+    {% end %}
     <link rel="stylesheet" href="{%= asset_path :css %}">
   </head>
   <body>
@@ -15,7 +19,11 @@
       {%= yield %}
     </main>
     <footer class="stoa-footer">
-      <small>Built with <a href="https://www.bridgetownrb.com">Bridgetown</a> + <a href="https://github.com/Guided-Rails/bridgetown-stoa">Stoa</a>.</small>
+      <small>
+        Built with <a href="https://www.bridgetownrb.com">Bridgetown</a>
+        <span>+</span>
+        <a href="https://github.com/Guided-Rails/bridgetown-stoa">Stoa</a>.
+      </small>
     </footer>
     <script src="{%= asset_path :js %}" defer></script>
   </body>
