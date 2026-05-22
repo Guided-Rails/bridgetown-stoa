@@ -24,8 +24,22 @@ class TestBridgetownStoa < Bridgetown::TestCase
       @contents = File.read(dest_dir("index.html"))
     end
 
-    it "outputs the overridden metadata" do
-      assert_includes @contents, "<title>My Awesome Site</title>"
+    it "combines page title with site metadata in the document title" do
+      assert_match(%r{<title>\s*Home \| My Awesome Site\s*</title>}, @contents)
+    end
+
+    it "renders a self-contained HTML document" do
+      assert_match(%r{<!doctype html>}i, @contents)
+      assert_match(%r{<html[\s>]}, @contents)
+      assert_match(%r{<head[\s>]}, @contents)
+      assert_match(%r{<body[\s>]}, @contents)
+    end
+
+    it "renders semantic chrome around yielded content" do
+      assert_match(%r{<header[\s>]}, @contents)
+      assert_match(%r{<main[\s>]}, @contents)
+      assert_match(%r{<footer[\s>]}, @contents)
+      assert_includes @contents, "Testing this plugin."
     end
   end
 end

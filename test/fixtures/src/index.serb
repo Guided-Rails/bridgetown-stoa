@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: bridgetown-stoa/layout
+title: Home
 ---
 
 Testing this plugin.
