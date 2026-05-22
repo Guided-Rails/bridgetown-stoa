@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- ...
+### Changed
+- Enabled the `npm_add` gemspec metadata so Bridgetown sites that install the gem auto-add the `bridgetown-stoa` npm dependency. Safe now that the package exists on the registry (was held back in 0.2.0 because the init-time lookup 404'd loudly until first publish).
 
 ## [0.2.0] - 2026-05-22
 
