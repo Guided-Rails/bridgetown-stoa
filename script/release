@@ -1,7 +1,11 @@
 #!/bin/sh
-# Tag and push a release to Rubygems
+# Tag and push a release to RubyGems and npm
 
 set -e
 
+# Fail fast before the gem publish if npm credentials are missing.
+npm whoami > /dev/null 2>&1 || { echo "Not logged in to npm. Run 'npm login' first."; exit 1; }
+
 script/cibuild
 bundle exec rake release
+npm publish
