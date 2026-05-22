@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- ...
+
+## [0.1.0] - 2026-05-22
+
 ### Changed
 - `bridgetown-stoa/layout` is now a self-contained HTML document (doctype, `<head>` with title/meta/asset tags, and `<header>`/`<main>`/`<footer>` chrome). Consumers no longer need to provide their own `default` layout to use Stoa. The layout also prepends `resource.data.title` to `<title>` when set. (#5)
 
