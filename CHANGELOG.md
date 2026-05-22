@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- ...
+
+## [0.2.0] - 2026-05-22
+
 ### Added
 - Tailwind v4 source partial at `frontend/styles/bridgetown-stoa.css`, shipped via a companion `bridgetown-stoa` npm package. Defines `--color-stoa-*` and `--font-stoa-*` design tokens (light + dark) in an `@theme` block, sets up class-strategy dark mode via `@custom-variant dark`, and applies a baseline `html` style. Host sites `@import "bridgetown-stoa"` and `@source` the layouts from their `frontend/styles/index.css`.
 - `script/release` now also runs `npm publish` after the gem release, and pre-flights `npm whoami` so it bails before the gem push if credentials are missing.
