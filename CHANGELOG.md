@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Tailwind v4 source partial at `frontend/styles/bridgetown-stoa.css`, shipped via a companion `bridgetown-stoa` npm package. Defines `--color-stoa-*` and `--font-stoa-*` design tokens (light + dark) in an `@theme` block, sets up class-strategy dark mode via `@custom-variant dark`, and applies a baseline `html` style. Host sites `@import "bridgetown-stoa"` and `@source` the layouts from their `frontend/styles/index.css`. The npm package is not yet published — see README for the intended setup.
+
 ### Fixed
 - `bridgetown-stoa/layout` no longer prepends `"Index | "` to `<title>` on the home page when `src/index.md` has no explicit `title:` front-matter. (#8)
 

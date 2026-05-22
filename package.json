@@ -1,0 +1,26 @@
+{
+  "name": "bridgetown-stoa",
+  "version": "0.1.0",
+  "description": "Tailwind v4 source partial and layouts for the Stoa Bridgetown documentation theme.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guided-Rails/bridgetown-stoa.git"
+  },
+  "homepage": "https://github.com/Guided-Rails/bridgetown-stoa",
+  "main": "frontend/styles/bridgetown-stoa.css",
+  "style": "frontend/styles/bridgetown-stoa.css",
+  "exports": {
+    ".": "./frontend/styles/bridgetown-stoa.css",
+    "./layouts/*": "./layouts/*"
+  },
+  "files": [
+    "frontend/styles/",
+    "layouts/",
+    "README.md",
+    "LICENSE.txt"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  }
+}
