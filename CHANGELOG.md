@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Enabled the `npm_add` gemspec metadata so Bridgetown sites that install the gem auto-add the `bridgetown-stoa` npm dependency. Safe now that the package exists on the registry (was held back in 0.2.0 because the init-time lookup 404'd loudly until first publish).
+- Enabled the `yarn-add` gemspec metadata so Bridgetown sites that install the gem auto-add the `bridgetown-stoa` npm dependency. Matches the idiomatic pattern from `bridgetown-quick-search`. (`yarn-add` and `npm_add` are synonyms inside Bridgetown's plugin manager — the gemspec template's commented `npm_add` is the older name; the ecosystem has standardized on `yarn-add`.)
+- Excluded `frontend/` from the gem's `files` glob. The Tailwind partial belongs in the npm companion only; shipping it in the gem too was duplicate distribution.
+- Test fixture initializer now passes `require_gem: false` to `init :"bridgetown-stoa"` so Bridgetown's plugin manager doesn't run `install_npm_dependencies` during the test suite (which would inject a self-referencing dep into the gem's own `package.json`). The gem is already loaded by `test/helper.rb`, so the re-require was redundant anyway.
 
 ## [0.2.0] - 2026-05-22
 

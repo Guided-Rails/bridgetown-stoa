@@ -11,11 +11,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/Guided-Rails/bridgetown-stoa"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|spec|features)/!) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|spec|features|frontend)/!) }
   spec.test_files    = spec.files.grep(%r!^test/!)
   spec.require_paths = ["lib"]
   spec.metadata      = {
-    "npm_add" => "bridgetown-stoa@#{BridgetownStoa::VERSION}",
+    "yarn-add" => "bridgetown-stoa@#{BridgetownStoa::VERSION}",
   }
 
   spec.required_ruby_version = ">= 3.2"
