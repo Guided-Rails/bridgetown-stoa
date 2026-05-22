@@ -1,0 +1,34 @@
+/* bridgetown-stoa: Tailwind v4 source partial. Import after `@import "tailwindcss"`. */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-stoa-bg: oklch(98% 0.002 264);
+  --color-stoa-surface: oklch(100% 0 0);
+  --color-stoa-fg: oklch(20% 0.012 264);
+  --color-stoa-muted: oklch(50% 0.012 264);
+  --color-stoa-border: oklch(92% 0.005 264);
+  --color-stoa-accent: oklch(55% 0.18 264);
+  --color-stoa-accent-fg: oklch(98% 0.002 264);
+
+  --font-stoa-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-stoa-mono: ui-monospace, "SF Mono", Menlo, "Cascadia Code", monospace;
+}
+
+@layer base {
+  .dark {
+    --color-stoa-bg: oklch(17% 0.012 264);
+    --color-stoa-surface: oklch(22% 0.012 264);
+    --color-stoa-fg: oklch(94% 0.005 264);
+    --color-stoa-muted: oklch(65% 0.012 264);
+    --color-stoa-border: oklch(28% 0.012 264);
+    --color-stoa-accent: oklch(72% 0.16 264);
+    --color-stoa-accent-fg: oklch(15% 0.012 264);
+  }
+
+  html {
+    background: var(--color-stoa-bg);
+    color: var(--color-stoa-fg);
+    font-family: var(--font-stoa-sans);
+  }
+}
