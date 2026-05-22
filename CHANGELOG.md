@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- ...
+### Changed
+- `bridgetown-stoa/layout` is now a self-contained HTML document (doctype, `<head>` with title/meta/asset tags, and `<header>`/`<main>`/`<footer>` chrome). Consumers no longer need to provide their own `default` layout to use Stoa. The layout also prepends `resource.data.title` to `<title>` when set. (#5)
+
+### Notes
+- The layout wires `asset_path :css` / `:js` for the host site's esbuild bundle. Bridgetown sites created with `bridgetown new` ship esbuild by default; sites without frontend bundling will see `MISSING_FRONTEND_BUNDLING_CONFIG` in the asset URLs until they configure one (or shadow the layout to drop the tags).
 
 ## [0.0.2] - 2026-05-22
 
