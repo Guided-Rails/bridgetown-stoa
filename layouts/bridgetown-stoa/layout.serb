@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-      {% if resource.data.title %}{{ resource.data.title }} | {% end %}{{ site.metadata.title }}
+      {% if resource.data.title != "Index" %}
+        {{ resource.data.title }} |
+      {% end %}
+      {{ site.metadata.title }}
     </title>
     {% if resource.data.description %}
       <meta name="description" content="{{ resource.data.description }}">
