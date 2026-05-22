@@ -30,7 +30,7 @@ class TestBridgetownStoa < Bridgetown::TestCase
 
     it "combines page title with site metadata in the document title" do
       about = File.read(dest_dir("about/index.html"))
-      assert_match(%r{<title>\s*About \| My Awesome Site\s*</title>}, about)
+      assert_match(%r{<title>\s*About\s*\|\s*My Awesome Site\s*</title>}, about)
     end
 
     it "renders a self-contained HTML document" do

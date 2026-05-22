@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- ...
+### Fixed
+- `bridgetown-stoa/layout` no longer prepends `"Index | "` to `<title>` on the home page when `src/index.md` has no explicit `title:` front-matter. (#8)
 
 ## [0.1.0] - 2026-05-22
 
