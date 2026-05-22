@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- ...
+
+## [0.3.0] - 2026-05-22
+
 ### Changed
 - Enabled the `yarn-add` gemspec metadata so Bridgetown sites that install the gem auto-add the `bridgetown-stoa` npm dependency. Matches the idiomatic pattern from `bridgetown-quick-search`. (`yarn-add` and `npm_add` are synonyms inside Bridgetown's plugin manager — the gemspec template's commented `npm_add` is the older name; the ecosystem has standardized on `yarn-add`.)
 - Excluded `frontend/` from the gem's `files` glob. The Tailwind partial belongs in the npm companion only; shipping it in the gem too was duplicate distribution.

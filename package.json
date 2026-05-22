@@ -1,6 +1,6 @@
 {
   "name": "bridgetown-stoa",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Tailwind v4 source partial and layouts for the Stoa Bridgetown documentation theme.",
   "license": "MIT",
   "repository": {
