@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "bridgetown"
+require_relative "bridgetown-stoa/version"
 
 # @param config [Bridgetown::Configuration::ConfigurationDSL]
 Bridgetown.initializer :"bridgetown-stoa" do |config|
