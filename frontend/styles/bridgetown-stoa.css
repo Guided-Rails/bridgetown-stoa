@@ -8,12 +8,12 @@
   --color-stoa-bg: #ffffff;
   --color-stoa-sidebar: #f5f6fa;
   --color-stoa-feedback: #ebedf2;
-  --color-stoa-fg: #5c5962;
+  --color-stoa-fg: #44434d;
   --color-stoa-heading: #27262b;
-  --color-stoa-muted: #959396;
+  --color-stoa-muted: #4f4d56;
   --color-stoa-border: #eeebee;
-  --color-stoa-link: #7253ed;
-  --color-stoa-link-hover: #5e41d0;
+  --color-stoa-link: #4e26af;
+  --color-stoa-link-hover: #381885;
   --color-stoa-code-bg: #ffffff;
 
   --font-stoa-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -32,12 +32,12 @@
     --color-stoa-bg: #27262b;
     --color-stoa-sidebar: #2e2c33;
     --color-stoa-feedback: #3a3742;
-    --color-stoa-fg: #bdbabf;
+    --color-stoa-fg: #d6d4d9;
     --color-stoa-heading: #ffffff;
-    --color-stoa-muted: #8d8a93;
+    --color-stoa-muted: #c2bec7;
     --color-stoa-border: #44434d;
-    --color-stoa-link: #b384f3;
-    --color-stoa-link-hover: #c8a4ff;
+    --color-stoa-link: #d8bcff;
+    --color-stoa-link-hover: #ebd7ff;
     --color-stoa-code-bg: #302d36;
   }
 
