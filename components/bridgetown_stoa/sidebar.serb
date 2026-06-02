@@ -1,0 +1,25 @@
+<nav class="stoa-sidebar" aria-label="Documentation navigation">
+  <ul>
+    {% tree.each do |node| %}
+      {% if node.children.any? %}
+        <li class="stoa-nav-parent">
+          <a href="{{ node.url }}"{% if node.current %} aria-current="page"{% end %}>{{ node.title }}</a>
+          <details{% if section_open?(node) %} open{% end %}>
+            <summary aria-label="Toggle {{ node.title }} section"></summary>
+            <ul>
+              {% node.children.each do |child| %}
+                <li>
+                  <a href="{{ child.url }}"{% if child.current %} aria-current="page"{% end %}>{{ child.title }}</a>
+                </li>
+              {% end %}
+            </ul>
+          </details>
+        </li>
+      {% else %}
+        <li>
+          <a href="{{ node.url }}"{% if node.current %} aria-current="page"{% end %}>{{ node.title }}</a>
+        </li>
+      {% end %}
+    {% end %}
+  </ul>
+</nav>
