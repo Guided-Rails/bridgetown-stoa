@@ -1,34 +1,387 @@
-/* bridgetown-stoa: Tailwind v4 source partial. Import after `@import "tailwindcss"`. */
+/* bridgetown-stoa: Tailwind v4 source partial. Import after `@import "tailwindcss"`.
+ * Layout and colors mirror just-the-docs (https://github.com/just-the-docs/just-the-docs).
+ */
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-stoa-bg: oklch(98% 0.002 264);
-  --color-stoa-surface: oklch(100% 0 0);
-  --color-stoa-fg: oklch(20% 0.012 264);
-  --color-stoa-muted: oklch(50% 0.012 264);
-  --color-stoa-border: oklch(92% 0.005 264);
-  --color-stoa-accent: oklch(55% 0.18 264);
-  --color-stoa-accent-fg: oklch(98% 0.002 264);
+  --color-stoa-bg: #ffffff;
+  --color-stoa-sidebar: #f5f6fa;
+  --color-stoa-feedback: #ebedf2;
+  --color-stoa-fg: #44434d;
+  --color-stoa-heading: #27262b;
+  --color-stoa-muted: #4f4d56;
+  --color-stoa-border: #eeebee;
+  --color-stoa-link: #4e26af;
+  --color-stoa-link-hover: #381885;
+  --color-stoa-code-bg: #ffffff;
 
-  --font-stoa-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-stoa-mono: ui-monospace, "SF Mono", Menlo, "Cascadia Code", monospace;
+  --font-stoa-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-stoa-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --stoa-nav-width: 16.5rem;
+  --stoa-nav-width-md: 15.5rem;
+  --stoa-content-width: 50rem;
+  --stoa-header-height: 3.75rem;
+  --stoa-gutter: 2rem;
+  --stoa-gutter-sm: 1rem;
 }
 
 @layer base {
   .dark {
-    --color-stoa-bg: oklch(17% 0.012 264);
-    --color-stoa-surface: oklch(22% 0.012 264);
-    --color-stoa-fg: oklch(94% 0.005 264);
-    --color-stoa-muted: oklch(65% 0.012 264);
-    --color-stoa-border: oklch(28% 0.012 264);
-    --color-stoa-accent: oklch(72% 0.16 264);
-    --color-stoa-accent-fg: oklch(15% 0.012 264);
+    --color-stoa-bg: #27262b;
+    --color-stoa-sidebar: #2e2c33;
+    --color-stoa-feedback: #3a3742;
+    --color-stoa-fg: #d6d4d9;
+    --color-stoa-heading: #ffffff;
+    --color-stoa-muted: #c2bec7;
+    --color-stoa-border: #44434d;
+    --color-stoa-link: #d8bcff;
+    --color-stoa-link-hover: #ebd7ff;
+    --color-stoa-code-bg: #302d36;
   }
 
   html {
     background: var(--color-stoa-bg);
     color: var(--color-stoa-fg);
     font-family: var(--font-stoa-sans);
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 31.25rem) {
+    html {
+      font-size: 1rem;
+    }
+  }
+
+  /* Sidebar shell (mobile-first: stacked above main) */
+  .stoa-sidebar-shell {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-stoa-sidebar);
+  }
+
+  .stoa-main {
+    margin: auto;
+  }
+
+  /* md: sidebar fixed left at 15.5rem, main has matching margin */
+  @media (min-width: 50rem) {
+    .stoa-sidebar-shell {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--stoa-nav-width-md);
+      height: 100%;
+      border-right: 1px solid var(--color-stoa-border);
+      align-items: flex-end;
+    }
+
+    .stoa-main {
+      position: relative;
+      max-width: var(--stoa-content-width);
+      margin-left: var(--stoa-nav-width-md);
+    }
+  }
+
+  /* lg: sidebar grows with viewport; nav content stays 16.5rem right-aligned */
+  @media (min-width: 66.5rem) {
+    .stoa-sidebar-shell {
+      width: calc((100% - (var(--stoa-nav-width) + var(--stoa-content-width))) / 2 + var(--stoa-nav-width));
+      min-width: var(--stoa-nav-width);
+    }
+
+    .stoa-main {
+      margin-left: max(
+        var(--stoa-nav-width),
+        calc((100% - (var(--stoa-nav-width) + var(--stoa-content-width))) / 2 + var(--stoa-nav-width))
+      );
+    }
+  }
+
+  /* Inner sidebar sections: full width on mobile; fixed 16.5rem (right-aligned) at lg */
+  .stoa-brand,
+  .stoa-sidebar,
+  .stoa-sidebar-footer {
+    width: 100%;
+  }
+
+  @media (min-width: 66.5rem) {
+    .stoa-brand,
+    .stoa-sidebar,
+    .stoa-sidebar-footer {
+      width: var(--stoa-nav-width);
+    }
+  }
+
+  /* Brand area at top of sidebar */
+  .stoa-brand {
+    display: flex;
+    min-height: var(--stoa-header-height);
+    align-items: center;
+    padding: 0 var(--stoa-gutter-sm);
+  }
+
+  @media (min-width: 50rem) {
+    .stoa-brand {
+      padding: 0 var(--stoa-gutter);
+      border-bottom: 1px solid var(--color-stoa-border);
+    }
+  }
+
+  .stoa-site-title {
+    color: var(--color-stoa-heading);
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  @media (min-width: 31.25rem) {
+    .stoa-site-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Site nav */
+  .stoa-sidebar {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding-top: var(--stoa-gutter);
+    padding-bottom: var(--stoa-gutter-sm);
+  }
+
+  .stoa-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .stoa-sidebar li {
+    position: relative;
+    margin: 0;
+  }
+
+  .stoa-sidebar a {
+    display: block;
+    color: var(--color-stoa-fg);
+    text-decoration: none;
+    min-height: 2rem;
+    line-height: 1.5rem;
+    padding: 0.25rem 2rem 0.25rem var(--stoa-gutter-sm);
+  }
+
+  @media (min-width: 50rem) {
+    .stoa-sidebar a {
+      padding-left: var(--stoa-gutter);
+    }
+  }
+
+  .stoa-sidebar a:hover,
+  .stoa-sidebar a[aria-current="page"] {
+    color: var(--color-stoa-link-hover);
+    background-image: linear-gradient(
+      -90deg,
+      var(--color-stoa-feedback) 0%,
+      color-mix(in srgb, var(--color-stoa-feedback) 80%, transparent) 80%,
+      transparent 100%
+    );
+  }
+
+  .stoa-sidebar a[aria-current="page"] {
+    font-weight: 600;
+  }
+
+  .stoa-sidebar ul ul {
+    padding-left: 0.75rem;
+  }
+
+  /* Collapsible parent sections: link + details (with toggle summary) as siblings */
+  .stoa-sidebar .stoa-nav-parent {
+    position: relative;
+  }
+
+  .stoa-sidebar .stoa-nav-parent > details > summary {
+    list-style: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-stoa-link);
+  }
+
+  .stoa-sidebar .stoa-nav-parent > details > summary::-webkit-details-marker { display: none; }
+
+  .stoa-sidebar .stoa-nav-parent > details > summary::after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+
+  .stoa-sidebar .stoa-nav-parent > details[open] > summary::after {
+    transform: rotate(135deg);
+  }
+
+  .stoa-sidebar .stoa-nav-parent > details > summary:hover {
+    background-image: linear-gradient(
+      -90deg,
+      var(--color-stoa-feedback) 0%,
+      color-mix(in srgb, var(--color-stoa-feedback) 80%, transparent) 100%
+    );
+  }
+
+  /* Footer pinned to the bottom of the sidebar */
+  .stoa-sidebar-footer {
+    padding: var(--stoa-gutter-sm);
+    font-size: 0.6875rem;
+  }
+
+  @media (min-width: 31.25rem) {
+    .stoa-sidebar-footer {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 50rem) {
+    .stoa-sidebar-footer {
+      padding-left: var(--stoa-gutter);
+      padding-right: var(--stoa-gutter);
+    }
+  }
+
+  .stoa-sidebar-footer a {
+    color: var(--color-stoa-link);
+    text-decoration: underline;
+    text-decoration-color: var(--color-stoa-border);
+    text-underline-offset: 2px;
+  }
+
+  /* Main content area */
+  .stoa-content {
+    padding: var(--stoa-gutter-sm);
+  }
+
+  @media (min-width: 50rem) {
+    .stoa-content {
+      padding: var(--stoa-gutter);
+    }
+  }
+
+  .stoa-content h1,
+  .stoa-content h2,
+  .stoa-content h3,
+  .stoa-content h4,
+  .stoa-content h5,
+  .stoa-content h6 {
+    color: var(--color-stoa-heading);
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 1em;
+  }
+
+  .stoa-content h1 {
+    font-weight: 300;
+    font-size: 2rem;
+  }
+
+  @media (min-width: 31.25rem) {
+    .stoa-content h1 { font-size: 2.25rem; }
+  }
+
+  .stoa-content h2 { font-size: 1.125rem; }
+
+  @media (min-width: 31.25rem) {
+    .stoa-content h2 { font-size: 1.5rem; }
+  }
+
+  .stoa-content h3 { font-size: 1rem; }
+
+  @media (min-width: 31.25rem) {
+    .stoa-content h3 { font-size: 1.125rem; }
+  }
+
+  .stoa-content h4 {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  @media (min-width: 31.25rem) {
+    .stoa-content h4 { font-size: 0.75rem; }
+  }
+
+  .stoa-content p,
+  .stoa-content ul,
+  .stoa-content ol,
+  .stoa-content blockquote,
+  .stoa-content pre,
+  .stoa-content table {
+    margin: 1em 0;
+    line-height: 1.6;
+  }
+
+  .stoa-content ul,
+  .stoa-content ol {
+    padding-left: 1.5rem;
+  }
+
+  .stoa-content li { margin: 0.25em 0; }
+
+  .stoa-content a {
+    color: var(--color-stoa-link);
+    text-decoration: underline;
+    text-decoration-color: var(--color-stoa-border);
+    text-underline-offset: 2px;
+  }
+
+  .stoa-content a:hover {
+    text-decoration-color: color-mix(in srgb, var(--color-stoa-link) 45%, transparent);
+  }
+
+  .stoa-content code {
+    font-family: var(--font-stoa-mono);
+    font-size: 0.75em;
+    background: var(--color-stoa-code-bg);
+    border: 1px solid var(--color-stoa-border);
+    border-radius: 4px;
+    padding: 0.125rem 0.375rem;
+  }
+
+  .stoa-content pre {
+    background: var(--color-stoa-code-bg);
+    border: 1px solid var(--color-stoa-border);
+    border-radius: 4px;
+    padding: 0.75rem;
+    overflow-x: auto;
+    line-height: 1.4;
+  }
+
+  .stoa-content pre code {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .stoa-content blockquote {
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-stoa-border);
+  }
+
+  .stoa-content hr {
+    height: 1px;
+    border: 0;
+    background: var(--color-stoa-border);
+    margin: 2rem 0;
   }
 }

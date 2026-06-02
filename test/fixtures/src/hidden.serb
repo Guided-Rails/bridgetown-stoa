@@ -1,0 +1,7 @@
+---
+layout: bridgetown-stoa/layout
+title: Hidden
+nav_exclude: true
+---
+
+This page should not appear in the sidebar.
