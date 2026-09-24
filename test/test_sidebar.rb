@@ -9,7 +9,7 @@ class TestSidebar < Bridgetown::TestCase
     end
 
     it "lists top-level pages as sidebar links" do
-      assert_match(%r{<a [^>]*href="/about/?"[^>]*>\s*About\s*</a>}, @contents)
+      assert_match(%r{<a [^>]*href="/about/?"[^>]*>\s*About\s*</a>}, contents)
       assert_match(%r{<a [^>]*href="/getting-started/?"[^>]*>\s*Getting Started\s*</a>}, @contents)
       assert_match(%r{<a [^>]*href="/advanced/?"[^>]*>\s*Advanced\s*</a>}, @contents)
     end
@@ -70,6 +70,12 @@ class TestSidebar < Bridgetown::TestCase
         %r{href="/getting-started/?"[^>]*aria-current="page"[^>]*>\s*Getting Started\s*</a>},
         gs_html
       )
+    end
+
+    private
+
+    def contents
+      @contents ||= File.read(dest_dir("index.html"))
     end
   end
 end
