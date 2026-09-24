@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- The sidebar footer is now its own component, `BridgetownStoa::SidebarFooter`, rendered by `bridgetown-stoa/layout` in place of the inline markup. A host site can replace it by adding `src/_components/bridgetown_stoa/sidebar_footer.serb`, without copying the whole layout.
+- `BridgetownStoa::Shadowable`, a mixin that makes a gem component look for its template in the host site's components directory before falling back to the gem's copy. Bridgetown normally resolves a component's template next to its Ruby class, which for a gem component is inside the gem; this mixin is what lets a site override just the `.serb`. Both `Sidebar` and `SidebarFooter` use it, so `src/_components/bridgetown_stoa/sidebar.serb` now shadows the navigation template too.
+
+### Changed
 - `script/release` accepts `--otp CODE` and forwards it to `gem push` via `GEM_HOST_OTP_CODE`, so a TOTP code can stand in for the WebAuthn browser handoff.
 
 ## [0.4.0] - 2026-09-24
