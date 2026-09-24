@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- ...
+- `script/release` accepts `--otp CODE` and forwards it to `gem push` via `GEM_HOST_OTP_CODE`, so a TOTP code can stand in for the WebAuthn browser handoff.
 
 ## [0.4.0] - 2026-09-24
 
