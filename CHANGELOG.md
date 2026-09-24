@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- ...
+
+## [0.4.0] - 2026-09-24
+
 ### Added
+- Sidebar navigation. `bridgetown-stoa/layout` now renders a `BridgetownStoa::Sidebar` component in a left-hand `<aside>` alongside the site title and footer, with the page body in `<main class="stoa-main">`. The sidebar lists every HTML resource that has a `title`, ordered by `nav_order` (then title), and nests a page under another by setting `parent:` to the parent's title; nested sections render as `<details>` and open automatically when the current page is inside them. Set `nav_exclude: true` in front matter to hide a page. The gem's `components/` directory is now registered on the source manifest so the component can be shadowed by the host site. (#14)
 - `bin/dev` serves the `test/fixtures` site with the theme applied for browser previews. The fixture now carries a standard Bridgetown esbuild + Tailwind v4 (`@tailwindcss/postcss`) frontend, so `asset_path :css` / `:js` resolve to real bundles, and it watches the gem's `layouts/` directory so theme edits live-reload.
 
 ### Fixed
