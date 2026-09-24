@@ -1,7 +1,29 @@
 #!/bin/sh
 # Tag and push a release to RubyGems and npm
+#
+# Usage: script/release [--otp CODE]
+#
+# --otp CODE  Six-digit code from your RubyGems TOTP authenticator. Passing it
+#             skips the WebAuthn browser handoff that `gem push` otherwise
+#             requires when MFA is enabled on the account.
 
 set -e
+
+case "$1" in
+  --otp)
+    [ -n "$2" ] || { echo "Usage: script/release [--otp CODE]"; exit 1; }
+    export GEM_HOST_OTP_CODE="$2"
+    ;;
+  --otp=*)
+    export GEM_HOST_OTP_CODE="${1#--otp=}"
+    ;;
+  "")
+    ;;
+  *)
+    echo "Usage: script/release [--otp CODE]"
+    exit 1
+    ;;
+esac
 
 # Fail fast before the gem publish if npm credentials are missing.
 npm whoami > /dev/null 2>&1 || { echo "Not logged in to npm. Run 'npm login' first."; exit 1; }
