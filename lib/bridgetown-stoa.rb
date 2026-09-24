@@ -15,6 +15,7 @@ Bridgetown.initializer :"bridgetown-stoa" do |config|
 
   config.source_manifest(
     origin: BridgetownStoa,
-    layouts: File.expand_path("../layouts", __dir__)
+    layouts: File.expand_path("../layouts", __dir__),
+    components: File.expand_path("../components", __dir__)
   )
 end

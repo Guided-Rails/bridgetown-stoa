@@ -3,22 +3,6 @@
 require_relative "helper"
 
 class TestBridgetownStoa < Bridgetown::TestCase
-  def setup
-    Bridgetown.reset_configuration!
-    @config = Bridgetown.configuration(
-      "root_dir"    => root_dir,
-      "source"      => source_dir,
-      "destination" => dest_dir,
-      "quiet"       => true
-    )
-    @config.run_initializers! context: :static
-    @site = Bridgetown::Site.new(@config)
-
-    with_metadata title: "My Awesome Site" do
-      @site.process
-    end
-  end
-
   describe "BridgetownStoa" do
     before do
       @contents = File.read(dest_dir("index.html"))
@@ -42,6 +26,7 @@ class TestBridgetownStoa < Bridgetown::TestCase
 
     it "renders semantic chrome around yielded content" do
       assert_match(%r{<header[\s>]}, @contents)
+      assert_match(%r{<nav[\s>]}, @contents)
       assert_match(%r{<main[\s>]}, @contents)
       assert_match(%r{<footer[\s>]}, @contents)
       assert_includes @contents, "Testing this plugin."

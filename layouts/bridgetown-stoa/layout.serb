@@ -14,20 +14,25 @@
     {% end %}
     <link rel="stylesheet" href="{%= asset_path :css %}">
   </head>
-  <body>
-    <header class="stoa-header">
-      <a href="/" class="stoa-site-title">{{ site.metadata.title }}</a>
-    </header>
+  <body class="stoa-shell">
+    <aside class="stoa-sidebar-shell">
+      <header class="stoa-brand">
+        <a href="/" class="stoa-site-title">{{ site.metadata.title }}</a>
+      </header>
+      {%= render BridgetownStoa::Sidebar.new(site: site, current_resource: resource) %}
+      <footer class="stoa-sidebar-footer">
+        <small>
+          Built with <a href="https://www.bridgetownrb.com">Bridgetown</a>
+          <span>+</span>
+          <a href="https://github.com/Guided-Rails/bridgetown-stoa">Stoa</a>.
+        </small>
+      </footer>
+    </aside>
     <main class="stoa-main">
-      {%= yield %}
+      <div class="stoa-content">
+        {%= yield %}
+      </div>
     </main>
-    <footer class="stoa-footer">
-      <small>
-        Built with <a href="https://www.bridgetownrb.com">Bridgetown</a>
-        <span>+</span>
-        <a href="https://github.com/Guided-Rails/bridgetown-stoa">Stoa</a>.
-      </small>
-    </footer>
     <script src="{%= asset_path :js %}" defer></script>
   </body>
 </html>
