@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BridgetownStoa::Sidebar < Bridgetown::Component
+  extend BridgetownStoa::Shadowable
+
   Node = Struct.new(:title, :url, :order, :parent_title, :current, :children, keyword_init: true)
 
   def initialize(site:, current_resource:)

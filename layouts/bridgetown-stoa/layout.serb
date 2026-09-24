@@ -20,13 +20,7 @@
         <a href="/" class="stoa-site-title">{{ site.metadata.title }}</a>
       </header>
       {%= render BridgetownStoa::Sidebar.new(site: site, current_resource: resource) %}
-      <footer class="stoa-sidebar-footer">
-        <small>
-          Built with <a href="https://www.bridgetownrb.com">Bridgetown</a>
-          <span>+</span>
-          <a href="https://github.com/Guided-Rails/bridgetown-stoa">Stoa</a>.
-        </small>
-      </footer>
+      {%= render BridgetownStoa::SidebarFooter.new %}
     </aside>
     <main class="stoa-main">
       <div class="stoa-content">

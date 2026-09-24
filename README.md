@@ -60,15 +60,40 @@ The layout is self-contained: it renders a full HTML document (doctype, `<head>`
 
 The document title is `{page title} | {site metadata title}` when a page sets `title:` in front matter, and just the site title otherwise. The layout also injects `asset_path :css` / `:js` so your site's esbuild bundle loads automatically.
 
-### Overriding the layout
+### Overriding parts of the layout
 
-To customize the chrome, shadow the layout in your own site:
+The sidebar chrome is built from components that a host site can shadow one at a time, without copying the whole layout. Drop a template with the matching path into your site's `src/_components` directory and Stoa renders yours instead of its own:
+
+| Component | Shadow at | Renders |
+| --- | --- | --- |
+| `BridgetownStoa::SidebarFooter` | `src/_components/bridgetown_stoa/sidebar_footer.serb` | The attribution footer at the bottom of the sidebar |
+| `BridgetownStoa::Sidebar` | `src/_components/bridgetown_stoa/sidebar.serb` | The navigation tree (the template has access to `tree` and `section_open?`) |
+
+For example, to add a line to the footer:
+
+```html
+<!-- src/_components/bridgetown_stoa/sidebar_footer.serb -->
+<footer class="stoa-sidebar-footer">
+  <small>
+    A <a href="https://example.com">My Org</a> project.
+    Built with <a href="https://www.bridgetownrb.com">Bridgetown</a>
+    <span>+</span>
+    <a href="https://github.com/Guided-Rails/bridgetown-stoa">Stoa</a>.
+  </small>
+</footer>
+```
+
+Only the template is replaced; the component's Ruby class still comes from the gem, so you keep any behavior it gains in later releases. Any template extension Bridgetown's components support (`.serb`, `.erb`, `.slim`, `.haml`) works.
+
+### Overriding the whole layout
+
+To replace the chrome entirely, shadow the layout itself:
 
 ```
 src/_layouts/bridgetown-stoa/layout.serb
 ```
 
-Bridgetown's layout resolution picks the host site's file over the gem's, so you can replace the entire layout or copy ours and edit it. (More granular override points — head, nav, footer partials — will land as the theme grows.)
+Bridgetown's layout resolution picks the host site's file over the gem's, so you can replace the entire layout or copy ours and edit it. Prefer shadowing a component when you only need to change one region, since a copied layout won't pick up later changes to the gem's chrome.
 
 ## Development
 
