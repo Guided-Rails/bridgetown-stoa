@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Serve the test fixture site with the theme applied, for previewing changes
+# to layouts and styles in a browser. Extra arguments are passed through to
+# `bridgetown start` (e.g. `bin/dev -P 4001`).
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+if ! bundle check >/dev/null 2>&1; then
+  bundle install
+fi
+
+cd test/fixtures
+
+if [ ! -f node_modules/.package-lock.json ] || [ package.json -nt node_modules/.package-lock.json ]; then
+  npm install
+fi
+
+exec bundle exec bridgetown start "$@"

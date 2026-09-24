@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- ...
+### Added
+- `bin/dev` serves the `test/fixtures` site with the theme applied for browser previews. The fixture now carries a standard Bridgetown esbuild + Tailwind v4 (`@tailwindcss/postcss`) frontend, so `asset_path :css` / `:js` resolve to real bundles, and it watches the gem's `layouts/` directory so theme edits live-reload.
+
+### Fixed
+- README's Tailwind setup snippet placed `@source` between the two `@import` rules, which made Tailwind and postcss-import silently drop `@import "bridgetown-stoa"`. The imports now come first.
 
 ## [0.3.0] - 2026-05-22
 

@@ -1,0 +1,6 @@
+/* Mirrors what a host site's frontend/styles/index.css looks like per the
+   README, except the theme partial is pulled from this repo's working tree
+   instead of node_modules so edits show up live under bin/dev. */
+@import "tailwindcss";
+@import "../../../../frontend/styles/bridgetown-stoa.css";
+@source "../../../../layouts/**/*.serb";

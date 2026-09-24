@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/Guided-Rails/bridgetown-stoa"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|spec|features|frontend)/!) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r!^(test|script|bin|spec|features|frontend)/!) }
   spec.test_files    = spec.files.grep(%r!^test/!)
   spec.require_paths = ["lib"]
   spec.metadata      = {
