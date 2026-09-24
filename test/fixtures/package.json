@@ -1,0 +1,21 @@
+{
+  "name": "bridgetown-stoa-fixture",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Host site used by the test suite and by bin/dev to preview the theme.",
+  "scripts": {
+    "esbuild": "node esbuild.config.js --minify",
+    "esbuild-dev": "node esbuild.config.js --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "esbuild": "^0.25.11",
+    "glob": "^11.0.3",
+    "postcss": "^8.5.6",
+    "postcss-import": "^16.1.0",
+    "postcss-load-config": "^6.0.1",
+    "read-cache": "^1.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

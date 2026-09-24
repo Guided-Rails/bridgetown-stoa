@@ -1,0 +1,21 @@
+# frozen_string_literal: true
+
+# Minimal Bridgetown site Rakefile: gives `bridgetown start` (via bin/dev)
+# a `frontend:dev` task so it can run esbuild alongside the site watcher.
+
+require "bridgetown"
+
+Bridgetown.load_tasks
+
+namespace :frontend do
+  desc "Build the frontend with esbuild for deployment"
+  task :build do
+    sh "npm run esbuild"
+  end
+
+  desc "Watch the frontend with esbuild during development"
+  task :dev do
+    sh "npm run esbuild-dev"
+  rescue Interrupt
+  end
+end

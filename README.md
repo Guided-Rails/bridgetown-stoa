@@ -34,12 +34,12 @@ Then in `frontend/styles/index.css`, after `@import "tailwindcss";`, add two lin
 
 ```css
 @import "tailwindcss";
-@source "../../node_modules/bridgetown-stoa/layouts/**/*.serb";
 @import "bridgetown-stoa";
+@source "../../node_modules/bridgetown-stoa/layouts/**/*.serb";
 ```
 
+- `@import "bridgetown-stoa"` pulls in the `@theme` tokens (`--color-stoa-*`, `--font-stoa-*`) and a small `@layer base` that styles `html` with the theme colors. Keep it directly after the Tailwind import: CSS requires all `@import` rules to come before any other rule, and an `@import` placed after `@source` is silently dropped.
 - `@source` tells Tailwind to scan Stoa's layouts for utility-class usage.
-- `@import "bridgetown-stoa"` pulls in the `@theme` tokens (`--color-stoa-*`, `--font-stoa-*`) and a small `@layer base` that styles `html` with the theme colors.
 
 Override any token by redeclaring it in your own `@theme` block after the import.
 
@@ -77,7 +77,10 @@ Requires Ruby ≥ 3.2 and Bridgetown ≥ 2.0.
 ```shell
 bundle install
 script/cibuild   # rubocop + minitest
+bin/dev          # preview the theme at http://localhost:4000
 ```
+
+`bin/dev` serves the site in `test/fixtures` with the theme applied, using a standard Bridgetown esbuild + Tailwind pipeline (it runs `bundle install` and `npm install` for you when needed). Edits to `layouts/` and `frontend/styles/` rebuild and live-reload. Extra arguments go to `bridgetown start`, e.g. `bin/dev -P 4001`.
 
 Templates use [Serbea](https://www.bridgetownrb.com/docs/template-engines/erb-and-beyond), Bridgetown's ERB-with-Liquid-like-sugar engine. Stoa is **inspired by** just-the-docs, not a port of it — layouts are written idiomatically for Bridgetown rather than translated from upstream.
 
